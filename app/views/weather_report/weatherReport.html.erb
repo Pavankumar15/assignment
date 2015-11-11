@@ -1,0 +1,25 @@
+ <% provide(:title, "Weather Information") %>
+<body>
+
+    <h1>Weather Information</h1>
+        <%= image_tag("weatherForecast-conditions.jpg", :width => 190, :height => 90) %>
+    
+    <%
+    require 'open-uri'
+    require 'json'
+    open('http://api.wunderground.com/api/8a0bcb596ef9389c/conditions/q/KY/murray.json') do |f|
+      json = f.read
+      parseJson = JSON.parse(json)
+      city = parseJson['current_observation']['display_location']['city']
+      weather = parseJson['current_observation']['temperature_string']
+      provide(:city, city)
+      provide(:weather,  weather)
+    end
+    %>
+    <p> City: <%= yield(:city) %> </p>
+    <p> Weather: <%= yield(:weather) %> </p>
+    <%= link_to 'Home Page',home_homePage_path %><br/>
+    <%= link_to 'Contact Information',contact_us_contactUs_path %><br/>
+
+</body>
+

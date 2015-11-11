@@ -1,0 +1,18 @@
+<% provide(:title, "Contact Us") %>
+
+<h1>Contact Information</h1>
+  <%= image_tag("contact-us-icons.png", :width => 90, :height => 90)  %>
+<%=form_tag  do%>
+  <h4><%=label_tag 'Contact Us by a phone'%></h4>
+    (270) 293-1234<br/>
+    (270) 293-5678<br/>
+  <h4><%=label_tag 'Contact Us by an Email'%></h4>
+    msu@murraystate.edu<br/>
+  <h4><%=label_tag 'Address'%></h4>
+    Murray State University<br/>
+    Murray KY 42071<br/>
+    
+    <b>Click the below links thats navigates to other pages</b><br/>
+    <%= link_to 'Home Page',home_homePage_path %><br/>
+    <%= link_to 'Weather Information',weather_report_weatherReport_path %><br/>
+<%end%>
